@@ -26,21 +26,26 @@
     </div>
 
     <!-- Todo: Create a modal with a form to add tasks -->
-    
+
     <!-- Modal -->
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="formModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="formModalLabel">Add Task</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            <label id="taskTitle" for="taskTitle" class="form-label">Task Title</label>
+            <input type="text" id="inputTitle" class="form-control">
+            <label for="taskDueDate" class="form-label">Task Due Date</label>
+            <input id="taskDueDate" autocomplete="off" type="text" class="form-control mb-3"/>
+            <label for="taskTexarea" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="taskTexareainput" rows="3"></textarea>
+                  
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-footer mx-auto">
+            <button type="button" class="btn btn-success">Add Task</button>
           </div>
         </div>
       </div>
