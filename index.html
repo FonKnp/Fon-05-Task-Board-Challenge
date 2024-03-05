@@ -36,13 +36,22 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <label id="taskTitle" for="taskTitle" class="form-label">Task Title</label>
-            <input type="text" id="inputTitle" class="form-control">
-            <label for="taskDueDate" class="form-label">Task Due Date</label>
-            <input id="taskDueDate" autocomplete="off" type="text" class="form-control mb-3"/>
-            <label for="taskTexarea" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="taskTexareainput" rows="3"></textarea>
-                  
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <label id="taskTitle" for="taskTitle" class="form-label">Task Title</label>
+                  <input type="text" id="inputTitle" class="form-control">
+                </div>
+                <div class="col-md-6 ms-auto">
+                  <label for="taskDueDate" class="form-label">Task Due Date</label>
+                  <input id="taskDueDate" autocomplete="off" type="text" class="form-control mb-3"/>
+                </div>
+                <div class="col-12">
+                  <label for="taskTextarea" class="form-label">Task Description</label>
+                  <textarea class="form-control" id="taskTextareainput" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer mx-auto">
             <button type="button" class="btn btn-success">Add Task</button>
