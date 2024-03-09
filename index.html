@@ -22,13 +22,13 @@
   </header>
   <div class="container">
     <div class="text-center mb-5">
-      <button id="taskButton" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
+      <button id="taskButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
 
     <!-- Todo: Create a modal with a form to add tasks -->
 
     <!-- Modal -->
-    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -36,26 +36,28 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <form id="task-form">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-6">
-                  <label id="taskTitle" for="taskTitle" class="form-label">Task Title</label>
-                  <input type="text" id="inputTitle" class="form-control">
+                  <label for="task-title-input" class="form-label">Task Title</label>
+                  <input type="text" id="task-title-input" class="form-control">
                 </div>
                 <div class="col-md-6 ms-auto">
                   <label for="taskDueDate" class="form-label">Task Due Date</label>
                   <input id="taskDueDate" autocomplete="off" type="text" class="form-control mb-3"/>
                 </div>
                 <div class="col-12">
-                  <label for="taskTextarea" class="form-label">Task Description</label>
-                  <textarea class="form-control" id="taskTextareainput" rows="3"></textarea>
+                  <label for="task-textarea-input" class="form-label">Task Description</label>
+                  <textarea class="form-control" id="task-textarea-input" rows="3"></textarea>
                 </div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary mx-auto">Add Task</button>
+            </div>
           </div>
-          <div class="modal-footer mx-auto">
-            <button type="button" class="btn btn-success">Add Task</button>
-          </div>
+        </form>
         </div>
       </div>
     </div>
