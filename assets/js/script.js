@@ -76,6 +76,7 @@ function createTaskCard(task) {
       taskCard.addClass('bg-warning text-white');
     } else if (now.isAfter(taskDueDate)) {
       taskCard.addClass('bg-danger text-white');
+      cardDeleteBt.addClass('btn-outline-warning');
     }
   }
 
