@@ -1,7 +1,8 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks")) ?? [];
-let nextId = JSON.parse(localStorage.getItem("nextId")) ?? 1;
+let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
+let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
 
+const taskDisplayEl = $('#task-display');
 const taskTitleInputEl = $('#task-title-input');
 const taskDueDateInputEl = $('#taskDueDate');
 const taskTextInputEl = $('#task-textarea-input');
@@ -19,7 +20,7 @@ function handleAddTask(event) {
   const taskDate = taskDueDateInputEl.val();
 
   let newTask = {
-    id: nextId++,
+    id: generateTaskId(),
     title: taskTitle,
     text: taskText,
     dueDate: taskDate,
@@ -37,6 +38,9 @@ function handleAddTask(event) {
   renderTaskList();
 }
 
+function generateTaskId() {
+  return nextId++;
+}
 //save to local storage
 // Accepts an array of tasks, stringifys them, and saves them in localStorage.
 function saveTasksToStorage(tasks) {
@@ -46,8 +50,12 @@ function saveTasksToStorage(tasks) {
 
 // read from storage
 function readTasksFromStorage() {
-  const storedTasks = localStorage.getItem("tasks");
-  return storedTasks ? JSON.parse(storedTasks) : [];
+  let taskList = JSON.parse(localStorage.getItem('tasks'));
+
+    if (!taskList) {
+        taskList = [];
+    }
+    return taskList;
 }
 
 
@@ -140,16 +148,19 @@ function handleDrop(event, ui) {
   // event.preventDefault();
   const taskList = readTasksFromStorage();
   
-  const taskId = ui.draggable[0].dataset.taskId
+  const taskId = ui.helper.attr('data-task-id');
   // Update task status in taskList
   
   const newStatus = event.target.id;
 
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].id === taskId) {
-      taskList[i].status = newStatus;
+  for (let task of taskList) {
+    if (task.id == taskId) {
+        task.status = newStatus;
     }
   }
+
+  saveTasksToStorage(taskList);
+  renderTaskList();
 }
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
@@ -169,3 +180,5 @@ $(document).ready(function () {
   });
 
 });
+
+taskDisplayEl.on('click', '.delete-task', handleDeleteTask); 
