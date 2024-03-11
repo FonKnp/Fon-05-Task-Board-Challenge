@@ -26,16 +26,19 @@ function handleAddTask(event) {
     dueDate: taskDate,
     status: 'to-do',
   };
-
+  const taskList = readTasksFromStorage();
   taskList.push(newTask);
 
   saveTasksToStorage(taskList);
   
+  renderTaskList();
 
-  taskForm.trigger('reset');
+  taskTitleInputEl.val('');
+  taskTextInputEl.val('');
+  taskDueDateInputEl.val('');
+
   taskForm.closest('.modal').modal('hide');
 
-  renderTaskList();
 }
 
 function generateTaskId() {
@@ -138,6 +141,7 @@ function renderTaskList() {
 
 function handleDeleteTask() {
   const taskId = $(this).data('task-id');
+  let taskList = readTasksFromStorage();
   taskList = taskList.filter(task => task.id !== taskId);
   saveTasksToStorage(taskList);
   renderTaskList();
@@ -181,4 +185,4 @@ $(document).ready(function () {
 
 });
 
-taskDisplayEl.on('click', '.delete-task', handleDeleteTask); 
+taskDisplayEl.on('click', '.delete', handleDeleteTask); 
