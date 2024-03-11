@@ -2,17 +2,13 @@
 
 ## Description
 
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+This challege is to create a simple task board application that allows a team to manage project tasks. This project is a lot of third party APIs. I learn that Jquery function are more useful and easy to use. I learn bootstrap css property. I learn what are the correct form and modal. I learn how to put a different class element in the html that link to bootstrap. I learn how to link html to bootstrap, Jquery, Jquery UI, and Google font UI. I learn how Jquery function work in JavaScript. It is really complicate when use all of these together.
 
 ## Usage
+This is the link to the website: [Task Board Page](https://fonknp.github.io/Fon-05-Task-Board-Challenge/)
 
-![]()
+This is the screenshot from the website.
+![ScreenShot01](assets/images/ScreenShot.png)
 
 ## Credits
 

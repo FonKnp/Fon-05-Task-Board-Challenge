@@ -114,16 +114,16 @@ function renderTaskList() {
     opacity: 0.7,
     zIndex: 100,
 
-  //   helper: function (e) {
-  //     // ? Check if the target of the drag event is the card itself or a child element. If it is the card itself, clone it, otherwise find the parent card  that is draggable and clone that.
-  //     const original = $(e.target).hasClass('ui-draggable')
-  //       ? $(e.target)
-  //       : $(e.target).closest('.ui-draggable');
-  //     // ? Return the clone with the width set to the width of the original card. This is so the clone does not take up the entire width of the lane. This is to also fix a visual bug where the card shrinks as it's dragged to the right.
-  //     return original.clone().css({
-  //       width: original.outerWidth(),
-  //     });
-  //   },
+    helper: function (e) {
+      // ? Check if the target of the drag event is the card itself or a child element. If it is the card itself, clone it, otherwise find the parent card  that is draggable and clone that.
+      const original = $(e.target).hasClass('ui-draggable')
+        ? $(e.target)
+        : $(e.target).closest('.ui-draggable');
+      // ? Return the clone with the width set to the width of the original card. This is so the clone does not take up the entire width of the lane. This is to also fix a visual bug where the card shrinks as it's dragged to the right.
+      return original.clone().css({
+        width: original.outerWidth(),
+      });
+    },
   });
 };
 
@@ -138,15 +138,17 @@ function handleDeleteTask() {
 // // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
   // event.preventDefault();
-  const taskId = ui.draggable[0].dataset.taskId;
-  const newStatus = $(this).data('status');
+  const taskList = readTasksFromStorage();
   
+  const taskId = ui.draggable[0].dataset.taskId
   // Update task status in taskList
-  const taskIndex = taskList.findIndex(task => task.id === taskId);
-  if (taskIndex !== -1) {
-    taskList[taskIndex].status = newStatus;
-    saveTasksToStorage(taskList);
-    renderTaskList();
+  
+  const newStatus = event.target.id;
+
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i].id === taskId) {
+      taskList[i].status = newStatus;
+    }
   }
 }
 
@@ -167,4 +169,3 @@ $(document).ready(function () {
   });
 
 });
-
